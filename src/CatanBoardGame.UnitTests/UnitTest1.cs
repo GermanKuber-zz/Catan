@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using CatanBoardGame.Core;
+using Xunit;
 
 namespace CatanBoardGame.UnitTests
 {

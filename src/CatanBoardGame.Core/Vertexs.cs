@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CatanBoardGame.UnitTests
+namespace CatanBoardGame.Core
 {
     public class Vertexs
     {

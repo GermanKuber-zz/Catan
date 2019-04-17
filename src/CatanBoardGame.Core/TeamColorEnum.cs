@@ -1,4 +1,4 @@
-﻿namespace CatanBoardGame.UnitTests
+﻿namespace CatanBoardGame.Core
 {
     public enum TeamColorEnum
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CatanBoardGame.UnitTests
+namespace CatanBoardGame.Core
 {
     public class Vertex
     {

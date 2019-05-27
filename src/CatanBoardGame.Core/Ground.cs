@@ -1,12 +1,16 @@
 ﻿namespace CatanBoardGame.Core
 {
+    public  class Limi
     public class Ground
     {
+        private readonly string _name;
+
         public Vertexs Vertexs { get; set; }
 
         public LimitManager Limits = new LimitManager();
-        public Ground()
+        public Ground(string name)
         {
+            _name = name;
             Vertexs = new Vertexs(Limits.Limits);
         }
         public Ground AddRight(Ground ground)
@@ -18,7 +22,7 @@
         }
         public Ground AddLeftDown(Ground ground)
         {
-            Limits.DownLeft = ground.Limits.TopRight;
+            Limits.LeftDown = ground.Limits.TopRight;
             Vertexs.Vertex5 = ground.Vertexs.Vertex3;
             Vertexs.Vertex6 = ground.Vertexs.Vertex2;
             return this;
@@ -41,6 +45,5 @@
             if (!vertex.HasBuilding())
                 vertex.AddBuilding(building);
         }
-
     }
 }

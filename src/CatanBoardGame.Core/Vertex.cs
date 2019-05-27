@@ -14,24 +14,23 @@ namespace CatanBoardGame.Core
         public Limit RightLimit { get; set; }
         public Building Building { get; private set; }
 
-        public void AddBuilding(Building building)
+        public DomainResponse AddBuilding(Building building)
         {
-            if (CanAddBuilding(building))
-                Building = building;
-            else
-                throw new Exception("Error");
+            if (!CanAddBuilding(building))
+                return DomainResponse.Error();
 
+            Building = building;
+            return DomainResponse.Ok();
         }
 
         public bool HasBuilding() =>
             Building != null;
 
         private bool CanAddBuilding(Building building) =>
-            ((LeftLimit != null && LeftLimit.Path != null && LeftLimit.Path.IfFromTeam(building.Team))
+            !((LeftLimit != null && LeftLimit.Path != null && LeftLimit.Path.IfFromTeam(building.Team))
              &&
              (RightLimit != null && RightLimit.Path != null && RightLimit.Path.IfFromTeam(building.Team)));
 
-
-
     }
+
 }

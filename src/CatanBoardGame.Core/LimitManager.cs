@@ -5,6 +5,8 @@ namespace CatanBoardGame.Core
 {
     public class LimitManager
     {
+        public Vertexs Vertexs { get; set; }
+
         public List<Limit> Limits;
         public Limit TopLeft
         {
@@ -26,7 +28,7 @@ namespace CatanBoardGame.Core
             get => Limits[2];
             set => Limits[2] = value;
         }
-        public Limit DownLeft
+        public Limit LeftDown
         {
             get => Limits[4];
             set => Limits[4] = value;

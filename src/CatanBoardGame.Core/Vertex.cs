@@ -27,7 +27,7 @@ namespace CatanBoardGame.Core
             Building != null;
 
         private bool CanAddBuilding(Building building) =>
-            ((LeftLimit != null && LeftLimit.Path != null && LeftLimit.Path.IfFromTeam(building.Team))
+            !((LeftLimit != null && LeftLimit.Path != null && LeftLimit.Path.IfFromTeam(building.Team))
              &&
              (RightLimit != null && RightLimit.Path != null && RightLimit.Path.IfFromTeam(building.Team)));
 

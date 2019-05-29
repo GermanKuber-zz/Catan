@@ -61,18 +61,18 @@ namespace CatanBoardGame.UnitTests
         }
 
 
-        [Fact]
-        public void Be_Same_Building_Same_Vertex_Different_Ground()
-        {
-            var newBuilding = new Building(_teamRed);
-            var path1 = new Path(_teamRed);
-            var path2 = new Path(_teamRed);
-            _1.AddPath(path1, _1.Limits.MiddleRight);
-            _1.AddPath(path2, _1.Limits.DownRight);
+        //[Fact]
+        //public void Be_Same_Building_Same_Vertex_Different_Ground()
+        //{
+        //    var newBuilding = new Building(_teamRed);
+        //    var path1 = new Path(_teamRed);
+        //    var path2 = new Path(_teamRed);
+        //    _1.AddPath(path1, _1.Limits.MiddleRight);
+        //    _1.AddPath(path2, _1.Limits.DownRight);
 
-            _1.AddBuilding(_1.Vertexs.Vertex5, newBuilding);
-            _1.Vertexs.Vertex5.Building.Should().Be(newBuilding);
-            _5.Vertexs.Vertex1.Building.Should().Be(newBuilding);
-        }
+        //    _1.AddBuilding(_1.Vertexs.Vertex5, newBuilding);
+        //    _1.Vertexs.Vertex5.Building.Should().Be(newBuilding);
+        //    _5.Vertexs.Vertex1.Building.Should().Be(newBuilding);
+        //}
     }
 }

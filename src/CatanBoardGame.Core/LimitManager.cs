@@ -46,6 +46,25 @@ namespace CatanBoardGame.Core
                 .ToList();
         }
 
+        public void AddRight(Ground ground)
+        {
+            MiddleRight = ground.Limits.MiddleLeft;
+            Vertexs.Vertex3 = Vertexs.Vertex1;
+            Vertexs.Vertex4 = Vertexs.Vertex6;
+        }
+        public void AddLeftDown(Ground ground)
+        {
+            LeftDown = ground.Limits.TopRight;
+            Vertexs.Vertex5 = Vertexs.Vertex3;
+            Vertexs.Vertex6 = Vertexs.Vertex2;
+        }
+        public void AddRightDown(Ground ground)
+        {
+            DownRight = ground.Limits.TopLeft;
+            Vertexs.Vertex4 = Vertexs.Vertex2;
+            Vertexs.Vertex5 = Vertexs.Vertex1;
+        }
+
         public bool Contain(Limit limit) =>
             Limits.Any(limitToCompare => limitToCompare == limit);
     }

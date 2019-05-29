@@ -4,19 +4,20 @@ using Xunit;
 
 namespace CatanBoardGame.UnitTests
 {
-    public class GoundShoulVertexs : GroundShouldBase
+    public class LimitManagerShould : GroundShouldBase
     {
-        public GoundShoulVertexs()
+        private LimitManager _sut;
+        public LimitManagerShould()
         {
-
+            _sut = new LimitManager();
         }
         [Fact]
         public void Add_1_MiddleRight_With_2_MiddleLeft()
         {
             _1.AddRight(_2);
-            _1.Limits.MiddleRight.Should().Be(_2.Limits.MiddleLeft);
-            _1.Vertexs.Vertex3.Should().Be(_2.Vertexs.Vertex1);
-            _1.Vertexs.Vertex4.Should().Be(_2.Vertexs.Vertex6);
+            _sut.MiddleRight.Should().Be(_2.Limits.MiddleLeft);
+            _sut.Vertexs.Vertex3.Should().Be(_sut.Vertexs.Vertex1);
+            _sut.Vertexs.Vertex4.Should().Be(_sut.Vertexs.Vertex6);
         }
 
         [Fact]
@@ -25,10 +26,10 @@ namespace CatanBoardGame.UnitTests
             _1.AddRight(_2);
             _2.AddLeftDown(_5);
             _1.AddRightDown(_5);
-            _1.Limits.DownRight.Should().Be(_5.Limits.TopLeft);
-            _1.Vertexs.Vertex4.Should().Be(_5.Vertexs.Vertex2);
-            _1.Vertexs.Vertex5.Should().Be(_5.Vertexs.Vertex1);
-            _2.Vertexs.Vertex6.Should().Be(_5.Vertexs.Vertex2);
+            _sut.DownRight.Should().Be(_5.Limits.TopLeft);
+            _sut.Vertexs.Vertex4.Should().Be(_sut.Vertexs.Vertex2);
+            _sut.Vertexs.Vertex5.Should().Be(_sut.Vertexs.Vertex1);
+            _sut.Vertexs.Vertex6.Should().Be(_sut.Vertexs.Vertex2);
         }
         [Fact]
         public void Add_1_LeftDown_With_4_TopRight()
@@ -37,11 +38,11 @@ namespace CatanBoardGame.UnitTests
             _4.AddRight(_5);
             _1.AddRightDown(_5);
 
-            _1.Limits.LeftDown.Should().Be(_4.Limits.TopRight);
-            _1.Vertexs.Vertex6.Should().Be(_4.Vertexs.Vertex2);
-            _1.Vertexs.Vertex5.Should().Be(_4.Vertexs.Vertex3);
-            _5.Vertexs.Vertex1.Should().Be(_4.Vertexs.Vertex3);
-            _5.Vertexs.Vertex1.Should().Be(_1.Vertexs.Vertex5);
+            _sut.LeftDown.Should().Be(_sut.TopRight);
+            _sut.Vertexs.Vertex6.Should().Be(_sut.Vertexs.Vertex2);
+            _sut.Vertexs.Vertex5.Should().Be(_sut.Vertexs.Vertex3);
+            _sut.Vertexs.Vertex1.Should().Be(_sut.Vertexs.Vertex3);
+            _sut.Vertexs.Vertex1.Should().Be(_sut.Vertexs.Vertex5);
         }
 
         [Fact]
@@ -73,10 +74,10 @@ namespace CatanBoardGame.UnitTests
             _4.AddPath(new Path(_teamRed), _4.Limits.TopRight);
             _4.AddPath(new Path(_teamRed), _4.Limits.MiddleRight);
 
-            _4.AddBuilding(_4.Vertexs.Vertex4, new Building(_teamRed));
+            _4.AddBuilding(_4.Limits.Vertexs.Vertex4, new Building(_teamRed));
 
-            _4.Vertexs.Vertex4.Should().Be(_5.Vertexs.Vertex6);
-            _4.Vertexs.Vertex4.Building.Should().Be(_5.Vertexs.Vertex6.Building);
+            _4.Limits.Vertexs.Vertex4.Should().Be(_5.Limits.Vertexs.Vertex6);
+            _4.Limits.Vertexs.Vertex4.Building.Should().Be(_5.Limits.Vertexs.Vertex6.Building);
         }
 
         [Fact]
@@ -89,13 +90,13 @@ namespace CatanBoardGame.UnitTests
             _4.AddPath(new Path(_teamRed), _4.Limits.TopRight);
             _4.AddPath(new Path(_teamRed), _4.Limits.MiddleRight);
 
-            _4.AddBuilding(_4.Vertexs.Vertex3, new Building(_teamRed));
+            _4.AddBuilding(_4.Limits.Vertexs.Vertex3, new Building(_teamRed));
 
-            _4.Vertexs.Vertex3.Should().Be(_5.Vertexs.Vertex1);
-            _1.Vertexs.Vertex5.Should().Be(_5.Vertexs.Vertex1);
+            _4.Limits.Vertexs.Vertex3.Should().Be(_5.Limits.Vertexs.Vertex1);
+            _1.Limits.Vertexs.Vertex5.Should().Be(_5.Limits.Vertexs.Vertex1);
 
-            _4.Vertexs.Vertex3.Building.Should().Be(_5.Vertexs.Vertex1.Building);
-            _1.Vertexs.Vertex5.Building.Should().Be(_4.Vertexs.Vertex3.Building);
+            _4.Limits.Vertexs.Vertex3.Building.Should().Be(_5.Limits.Vertexs.Vertex1.Building);
+            _1.Limits.Vertexs.Vertex5.Building.Should().Be(_4.Limits.Vertexs.Vertex3.Building);
         }
     }
 }

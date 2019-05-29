@@ -7,14 +7,6 @@ namespace CatanBoardGame.UnitTests
     public class GroundShould : GroundShouldBase
     {
 
-
-        public GroundShould()
-        {
-            _teamRed = new Team(TeamColorEnum.Red, "German");
-            _teamBlue = new Team(TeamColorEnum.Blue, "Other");
-
-        }
-
         [Fact]
         public void Has_Same_MiddleRight_than_MiddleLeft()
         {
@@ -48,7 +40,32 @@ namespace CatanBoardGame.UnitTests
         [Fact]
         public void Return_Error_When_The_Limit_Does_Not_Exist()
         {
-            _5.AddPath(new Path(_teamRed), _1.Limits.MiddleRight).SuccessResult.Should().Be(false); 
+            _5.AddPath(new Path(_teamRed), _1.Limits.MiddleRight).SuccessResult.Should().Be(false);
+        }
+        [Fact]
+        public void Add_Path()
+        {
+            _5.AddPath(new Path(_teamRed), _5.Limits.MiddleRight).SuccessResult.Should().Be(true);
+        }
+
+        [Fact]
+        public void Return_Error_When_Add_Multiples_Building()
+        {
+            _5.AddBuilding(_5.Limits.Vertexs.Vertex1, new Building(_teamBlue));
+            _5.AddBuilding(_5.Limits.Vertexs.Vertex1, new Building(_teamBlue)).SuccessResult.Should().Be(false);
+
+        }
+        //[Fact]
+        //public void Not_Add_Building_Limit_Path_Is_From_Other_Team()
+        //{
+        //    _5.AddPath(new Path(_teamRed), _5.Limits.MiddleLeft);
+        //    _5.AddBuilding(_5.Limits.Vertexs.Vertex1, new Building(_teamBlue)).SuccessResult.Should().Be(false);
+        //}
+
+        [Fact]
+        public void Add_Building()
+        {
+            _5.AddBuilding(_5.Limits.Vertexs.Vertex1, new Building(_teamBlue)).SuccessResult.Should().Be(true);
         }
     }
 }

@@ -34,13 +34,7 @@
             limit.AddPath(path);
             return DomainResponse.Ok();
         }
-        public DomainResponse AddBuilding(Vertex vertex, Building building)
-        {
-            if (vertex.HasBuilding())
-                return DomainResponse.Error();
-
+        public DomainResponse AddBuilding(Vertex vertex, Building building)=>
             vertex.AddBuilding(building);
-            return DomainResponse.Ok();
-        }
     }
 }

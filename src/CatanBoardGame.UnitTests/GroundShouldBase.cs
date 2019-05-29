@@ -33,6 +33,8 @@ namespace CatanBoardGame.UnitTests
             _10 = new Ground("10");
             _11 = new Ground("11");
             _12 = new Ground("12");
+            _teamRed = new Team(TeamColorEnum.Red, "German");
+            _teamBlue = new Team(TeamColorEnum.Blue, "Other");
             MakeBoard();
         }
 

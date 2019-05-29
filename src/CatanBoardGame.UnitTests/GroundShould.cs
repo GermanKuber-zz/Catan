@@ -31,7 +31,7 @@ namespace CatanBoardGame.UnitTests
         [Fact]
         public void Has_Same_Down_Right_that_Top_Left()
         {
-            _1.Limits.DownRight.Should().Be(_5.Limits.TopLeft);
+            _1.Limits.RightDown.Should().Be(_5.Limits.TopLeft);
         }
         [Fact]
         public void Has_Same_Top_Right_than_Down_Left()

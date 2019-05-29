@@ -9,11 +9,20 @@ namespace CatanBoardGame.Core
             LeftLimit = leftLimit;
             RightLimit = rightLimit;
         }
+        public Vertex(Limit leftLimit, Limit rightLimit, int id)
+        {
+            LeftLimit = leftLimit;
+            RightLimit = rightLimit;
+            Id = id;
+            IDUnique = Guid.NewGuid();
+        }
 
         public Limit LeftLimit { get; set; }
         public Limit RightLimit { get; set; }
         public Building Building { get; private set; }
+        public int Id { get; }
 
+        public Guid IDUnique { get; set; }
         public DomainResponse AddBuilding(Building building)
         {
             if (!CanAddBuilding(building))

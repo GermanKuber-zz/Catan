@@ -33,7 +33,7 @@ namespace CatanBoardGame.Core
             get => Limits[4];
             set => Limits[4] = value;
         }
-        public Limit DownRight
+        public Limit RightDown
         {
             get => Limits[3];
             set => Limits[3] = value;
@@ -44,25 +44,26 @@ namespace CatanBoardGame.Core
             Limits = Enumerable.Range(0, 6)
                 .Select(x => new Limit())
                 .ToList();
+            Vertexs = new Vertexs(Limits);
         }
 
         public void AddRight(Ground ground)
         {
             MiddleRight = ground.Limits.MiddleLeft;
-            Vertexs.Vertex3 = Vertexs.Vertex1;
-            Vertexs.Vertex4 = Vertexs.Vertex6;
+            ground.Limits.Vertexs.Vertex1 = Vertexs.Vertex3;
+            ground.Limits.Vertexs.Vertex6 = Vertexs.Vertex4;
         }
         public void AddLeftDown(Ground ground)
         {
             LeftDown = ground.Limits.TopRight;
-            Vertexs.Vertex5 = Vertexs.Vertex3;
-            Vertexs.Vertex6 = Vertexs.Vertex2;
+            ground.Limits.Vertexs.Vertex3 = Vertexs.Vertex5;
+            ground.Limits.Vertexs.Vertex2 = Vertexs.Vertex6;
         }
         public void AddRightDown(Ground ground)
         {
-            DownRight = ground.Limits.TopLeft;
-            Vertexs.Vertex4 = Vertexs.Vertex2;
-            Vertexs.Vertex5 = Vertexs.Vertex1;
+            RightDown = ground.Limits.TopLeft;
+             ground.Limits.Vertexs.Vertex2= Vertexs.Vertex4;
+             ground.Limits.Vertexs.Vertex1 = Vertexs.Vertex5;
         }
 
         public bool Contain(Limit limit) =>

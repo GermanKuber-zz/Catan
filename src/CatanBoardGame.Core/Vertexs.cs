@@ -13,12 +13,12 @@ namespace CatanBoardGame.Core
 
         public Vertexs(List<Limit> limits)
         {
-            Vertex1 = new Vertex(limits[5], limits[0]);
-            Vertex2 = new Vertex(limits[0], limits[1]);
-            Vertex3 = new Vertex(limits[1], limits[2]);
-            Vertex4 = new Vertex(limits[2], limits[3]);
-            Vertex5 = new Vertex(limits[3], limits[4]);
-            Vertex6 = new Vertex(limits[4], limits[5]);
+            Vertex1 = new Vertex(limits[5], limits[0], 1);
+            Vertex2 = new Vertex(limits[0], limits[1], 2);
+            Vertex3 = new Vertex(limits[1], limits[2], 3);
+            Vertex4 = new Vertex(limits[2], limits[3], 4);
+            Vertex5 = new Vertex(limits[3], limits[4], 5);
+            Vertex6 = new Vertex(limits[4], limits[5], 6);
         }
     }
 }

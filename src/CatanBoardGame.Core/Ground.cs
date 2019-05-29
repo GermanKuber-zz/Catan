@@ -3,7 +3,7 @@
     public class Ground
     {
         private readonly string _name;
-        
+
         public LimitManager Limits = new LimitManager();
         public Ground(string name)
         {
@@ -25,15 +25,22 @@
             return this;
         }
 
-        public void AddPath(Path path, Limit limit)
+        public DomainResponse AddPath(Path path, Limit limit)
         {
-            if (Limits.Contain(limit) && !limit.HasPath())
-                limit.AddPath(path);
+            var enableToAddPaht = Limits.Contain(limit) && !limit.HasPath();
+            if (!enableToAddPaht)
+                return DomainResponse.Error();
+
+            limit.AddPath(path);
+            return DomainResponse.Ok();
         }
-        public void AddBuilding(Vertex vertex, Building building)
+        public DomainResponse AddBuilding(Vertex vertex, Building building)
         {
-            if (!vertex.HasBuilding())
-                vertex.AddBuilding(building);
+            if (vertex.HasBuilding())
+                return DomainResponse.Error();
+
+            vertex.AddBuilding(building);
+            return DomainResponse.Ok();
         }
     }
 }
